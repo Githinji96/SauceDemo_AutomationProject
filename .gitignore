@@ -1,0 +1,47 @@
+# Maven build output
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Test reports and screenshots
+reports/
+screenshots/
+test-output/
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+# VS Code
+.vscode/
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Logs
+*.log
+
+# Sensitive config — do not commit credentials
+src/main/resources/config.properties
