@@ -29,7 +29,6 @@ public class LoadProperties {
         return value;
     }
 
-    // Convenience accessors
     public static String getUsername() {
         return getProperty("login.username");
     }
@@ -46,9 +45,13 @@ public class LoadProperties {
         return getProperty("staging.url");
     }
 
-    // Returns shared password for multi-user tests
-    public static String getSharedPassword() {
-        return getProperty("login.password.shared");
+    // Resolves URL based on env name: "qa" or "staging"
+    public static String getUrlForEnv(String env) {
+        switch (env.toLowerCase().trim()) {
+            case "staging": return getStagingUrl();
+            case "qa":
+            default:        return getQaUrl();
+        }
     }
 
     // Returns list of usernames for data provider tests

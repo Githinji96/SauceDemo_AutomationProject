@@ -2,7 +2,6 @@ package addToCartTests;
 
 import Config.LoadProperties;
 import base.BaseTest;
-import driver.DriverFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,16 +10,8 @@ import pages.Authentication;
 
 public class AddToCartTests extends BaseTest {
 
-    @Override
-    @BeforeMethod
-    public void setUp() {
-        DriverFactory factory = new DriverFactory("firefox");
-        driver = factory.getDriver();
-
-        // Navigate to staging environment
-        //driver.get(LoadProperties.getStagingUrl());
-        driver.get(LoadProperties.getQaUrl());
-        // Login before every test method
+    @BeforeMethod(dependsOnMethods = "setUp")
+    public void login() {
         Authentication authentication = new Authentication(driver);
         authentication.validLogin(LoadProperties.getUsername(), LoadProperties.getPassword());
 

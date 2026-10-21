@@ -15,7 +15,7 @@ public class AuthenticationTest extends BaseTest {
     @DataProvider(name = "validUsers")
     public Object[][] validUsers() {
         String[] users = LoadProperties.getUsers();
-        String sharedPassword = LoadProperties.getSharedPassword();
+        String sharedPassword = LoadProperties.getPassword();
         Object[][] data = new Object[users.length][2];
         for (int i = 0; i < users.length; i++) {
             data[i][0] = users[i].trim();

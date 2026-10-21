@@ -6,6 +6,12 @@
         <listener class-name="Listeners.Listeners"/>
     </listeners>
 
+    <!--
+        Change env to "staging" to run the entire suite against www.stg-saucedemo.com
+        Or override from command line: mvn test -Denv=staging
+    -->
+    <parameter name="env" value="qa"/>
+
     <test name="Authentication Tests" preserve-order="true">
         <classes>
             <class name="authenticationTests.AuthenticationTest">
