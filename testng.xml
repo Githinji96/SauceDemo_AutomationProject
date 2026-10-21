@@ -1,2 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="C:/Users/User/eclipse-workspace/SauceDemoTest_Automation"><classes><class name="addToCartTests.AddToCartTests"><methods><include name="addRandomProductToCart"/></methods></class><class name="authenticationTests.AuthenticationTest"><methods><include name="validLoginTest"/><include name="invalidLoginTest"/></methods></class></classes></test></suite>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SauceDemo Test Suite" verbose="2">
+
+    <listeners>
+        <listener class-name="Listeners.Listeners"/>
+    </listeners>
+
+    <test name="Authentication Tests" preserve-order="true">
+        <classes>
+            <class name="authenticationTests.AuthenticationTest">
+                <methods>
+                    <include name="validLoginTest"/>
+                    <include name="invalidLoginTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Add To Cart Tests" preserve-order="true">
+        <classes>
+            <class name="addToCartTests.AddToCartTests">
+                <methods>
+                    <include name="addRandomProductToCart"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

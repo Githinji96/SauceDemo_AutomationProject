@@ -4,7 +4,9 @@ import Config.LoadProperties;
 import driver.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import utils.ExtentReportManager;
 
 public class BaseTest {
 
@@ -25,5 +27,10 @@ public class BaseTest {
             driver.quit();
             driver = null;
         }
+    }
+
+    @AfterSuite(alwaysRun = true)
+    public void generateReport() {
+        ExtentReportManager.convertHtmlToPdf();
     }
 }
