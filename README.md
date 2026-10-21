@@ -171,7 +171,7 @@ Screenshots on failure are saved to `screenshots/`.
 
 ## CI/CD — GitHub Actions
 
-The workflow runs on every push/PR to `main` and can be triggered manually with an environment choice.
+The workflow runs on every push/PR to `master` and can be triggered manually with an environment and browser choice.
 
 ### Required GitHub Secrets
 
