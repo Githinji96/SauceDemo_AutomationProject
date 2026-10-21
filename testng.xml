@@ -8,9 +8,11 @@
 
     <!--
         Change env to "staging" to run the entire suite against www.stg-saucedemo.com
-        Or override from command line: mvn test -Denv=staging
+        Change browser to "firefox" or "edge" to switch browsers
+        Or override from command line: mvn test -Denv=staging -Dbrowser=firefox
     -->
-    <parameter name="env" value="qa"/>
+    <parameter name="env"     value="qa"/>
+    <parameter name="browser" value="chrome"/>
 
     <test name="Authentication Tests" preserve-order="true">
         <classes>

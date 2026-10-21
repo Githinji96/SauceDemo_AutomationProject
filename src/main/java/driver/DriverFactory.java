@@ -10,7 +10,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,13 +37,18 @@ public class DriverFactory {
         if (browser.equalsIgnoreCase("firefox")) {
 
             WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
+            FirefoxOptions firefoxOptions = new FirefoxOptions();
+            if (Boolean.parseBoolean(System.getProperty("headless", "false"))) {
+                firefoxOptions.addArguments("--headless");
+                firefoxOptions.addArguments("--width=1920");
+                firefoxOptions.addArguments("--height=1080");
+            }
+            driver = new FirefoxDriver(firefoxOptions);
 
         } else if (browser.equalsIgnoreCase("chrome")) {
 
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
-            // Run headless in CI environments
             if (Boolean.parseBoolean(System.getProperty("headless", "false"))) {
                 options.addArguments("--headless=new");
                 options.addArguments("--no-sandbox");
@@ -54,7 +61,14 @@ public class DriverFactory {
         } else if (browser.equalsIgnoreCase("edge")) {
 
             WebDriverManager.edgedriver().setup();
-            driver = new EdgeDriver();
+            EdgeOptions edgeOptions = new EdgeOptions();
+            if (Boolean.parseBoolean(System.getProperty("headless", "false"))) {
+                edgeOptions.addArguments("--headless=new");
+                edgeOptions.addArguments("--no-sandbox");
+                edgeOptions.addArguments("--disable-dev-shm-usage");
+                edgeOptions.addArguments("--window-size=1920,1080");
+            }
+            driver = new EdgeDriver(edgeOptions);
 
         } else {
             throw new IllegalArgumentException(

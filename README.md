@@ -56,7 +56,7 @@ src/
 ### Prerequisites
 - Java 17+
 - Maven 3.x
-- Google Chrome installed
+- At least one of: Google Chrome, Firefox, or Microsoft Edge (WebDriverManager handles driver binaries automatically)
 
 ### 1. Clone the repository
 ```bash
@@ -103,14 +103,22 @@ mvn test
 mvn test -Denv=staging
 ```
 
-### Switch environment in testng.xml
-Open `testng.xml` and change:
-```xml
-<parameter name="env" value="qa"/>
+### Run on a specific browser
+```bash
+mvn test -Dbrowser=firefox
+mvn test -Dbrowser=edge
+mvn test -Dbrowser=chrome
 ```
-to:
+
+### Combine environment and browser
+```bash
+mvn test -Denv=staging -Dbrowser=firefox
+```
+
+### Switch environment or browser in testng.xml
 ```xml
-<parameter name="env" value="staging"/>
+<parameter name="env"     value="staging"/>
+<parameter name="browser" value="firefox"/>
 ```
 
 ---
