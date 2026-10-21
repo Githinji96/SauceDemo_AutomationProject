@@ -14,7 +14,7 @@
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.version>4.51.0</selenium.version>
-        <testng.version>7.6.1</testng.version>
+        <testng.version>7.12.0</testng.version>
     </properties>
 
     <dependencies>
@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.51.0</version>
+            <version>${selenium.version}</version>
         </dependency>
 
         <!-- WebDriverManager -->
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.12.0</version>
+            <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -71,13 +71,6 @@
             <version>2.16.1</version>
         </dependency>
 
-        <!-- iText 5 legacy PDF library -->
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itextpdf</artifactId>
-            <version>5.5.13.4</version>
-        </dependency>
-
         <!-- HTML to PDF: iText 7 family -->
         <dependency>
             <groupId>com.itextpdf</groupId>
@@ -96,6 +89,7 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
