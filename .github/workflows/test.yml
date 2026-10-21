@@ -38,18 +38,11 @@ jobs:
       - name: Generate config.properties from secrets
         run: |
           mkdir -p src/main/resources
-          cat > src/main/resources/config.properties <<EOF
-          # Environment URLs
-          qa.url=${{ secrets.QA_URL }}
-          staging.url=${{ secrets.STAGING_URL }}
-
-          # Credentials
-          login.username=${{ secrets.LOGIN_USERNAME }}
-          login.password=${{ secrets.LOGIN_PASSWORD }}
-
-          # Multi-user credentials for data provider tests
-          login.users=${{ secrets.LOGIN_USERS }}
-          EOF
+          echo "qa.url=${{ secrets.QA_URL }}" > src/main/resources/config.properties
+          echo "staging.url=${{ secrets.STAGING_URL }}" >> src/main/resources/config.properties
+          echo "login.username=${{ secrets.LOGIN_USERNAME }}" >> src/main/resources/config.properties
+          echo "login.password=${{ secrets.LOGIN_PASSWORD }}" >> src/main/resources/config.properties
+          echo "login.users=${{ secrets.LOGIN_USERS }}" >> src/main/resources/config.properties
 
       - name: Run tests
         run: |
@@ -57,7 +50,7 @@ jobs:
             -Denv=${{ github.event.inputs.env || 'qa' }} \
             -Dheadless=true
 
-      - name: Upload test reports
+      - name: Upload test reports as artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -67,7 +60,7 @@ jobs:
             screenshots/
           retention-days: 7
 
-      - name: Upload surefire results
+      - name: Upload surefire results as artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:

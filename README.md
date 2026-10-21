@@ -2,6 +2,8 @@
 
 A Selenium WebDriver test automation framework built with Java, TestNG, and Maven to test the login functionality and cart operations of [SauceDemo](https://www.saucedemo.com/).
 
+[![Test Suite](https://github.com/Githinji96/SauceDemo_AutomationProject/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/Githinji96/SauceDemo_AutomationProject/actions/workflows/test.yml)
+
 ---
 
 ## Tech Stack
