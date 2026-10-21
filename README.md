@@ -65,20 +65,22 @@ cd SauceDemoTest_Automation
 ### 2. Create config.properties
 The credentials file is gitignored and must be created manually.
 
-Create `src/main/resources/config.properties` with the following content:
+Create `src/main/resources/config.properties` with the following keys:
 
 ```properties
 # Environment URLs
-qa.url=https://www.saucedemo.com/
-staging.url=https://www.stg-saucedemo.com/
+qa.url=
+staging.url=
 
 # Credentials
-login.username=standard_user
-login.password=secret_sauce
+login.username=
+login.password=
 
 # Multi-user credentials for data provider tests
-login.users=standard_user,problem_user,visual_user
+login.users=
 ```
+
+Fill in the values based on the target application credentials.
 
 ### 3. Install dependencies
 ```bash
@@ -157,7 +159,33 @@ Screenshots on failure are saved to `screenshots/`.
 
 ---
 
-## Configuration
+## CI/CD — GitHub Actions
+
+The workflow runs on every push/PR to `main` and can be triggered manually with an environment choice.
+
+### Required GitHub Secrets
+
+Go to **Settings → Secrets and variables → Actions** in your repository and add:
+
+| Secret | Description |
+|---|---|
+| `QA_URL` | QA environment URL |
+| `STAGING_URL` | Staging environment URL |
+| `LOGIN_USERNAME` | Default login username |
+| `LOGIN_PASSWORD` | Login password |
+| `LOGIN_USERS` | Comma-separated list of users for data provider |
+
+### Manual trigger with environment selection
+
+Go to **Actions → SauceDemo Test Suite → Run workflow** and select `qa` or `staging`.
+
+### Artifacts
+
+After each run, the following are uploaded and retained for 7 days:
+- `test-reports` — ExtentReport HTML and PDF, screenshots
+- `surefire-results` — raw TestNG XML results
+
+---
 
 | File | Purpose |
 |---|---|
