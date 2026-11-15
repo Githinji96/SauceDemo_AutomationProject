@@ -25,10 +25,9 @@ public class AddToCart {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    /**
-     * Picks a random item from the inventory, adds it to cart,
-     * and returns the item name.
-     */
+  //  Picks a random item from the inventory, adds it to cart,
+     // and returns the item name.
+
     public String addRandomItemToCart() {
         // Wait for items to be visible
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(addToCartButtons));
@@ -45,12 +44,12 @@ public class AddToCart {
         return selectedItemName;
     }
 
-    /**
-     * Returns the number of items currently in the cart.
-     */
+       //Returns the number of items currently in the cart.
+
     public int getCartCount() {
         List<WebElement> badge = driver.findElements(cartBadge);
-        if (badge.isEmpty()) return 0;
+        if (badge.isEmpty())
+            return 0;
         return Integer.parseInt(badge.get(0).getText().trim());
     }
 }

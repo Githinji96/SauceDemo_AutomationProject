@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+//read the configuration
 public class LoadProperties {
 
     private static final Properties properties = new Properties();
-
+// configuration is loaded automatically
     static {
         try (InputStream input = LoadProperties.class
                 .getClassLoader()
@@ -48,9 +49,11 @@ public class LoadProperties {
     // Resolves URL based on env name: "qa" or "staging"
     public static String getUrlForEnv(String env) {
         switch (env.toLowerCase().trim()) {
-            case "staging": return getStagingUrl();
+            case "staging":
+                return getStagingUrl();
             case "qa":
-            default:        return getQaUrl();
+            default:
+                return getQaUrl();
         }
     }
 

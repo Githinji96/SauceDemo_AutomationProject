@@ -48,6 +48,7 @@ public class DriverFactory {
         } else if (browser.equalsIgnoreCase("chrome")) {
 
             WebDriverManager.chromedriver().setup();
+            // configure chrome before setup
             ChromeOptions options = new ChromeOptions();
             if (Boolean.parseBoolean(System.getProperty("headless", "false"))) {
                 options.addArguments("--headless=new");
@@ -94,7 +95,8 @@ public class DriverFactory {
 
      //Takes a screenshot and saves it under screenshots folder
     public static String takeScreenshot(String testName) {
-        if (driver == null) return null;
+        if (driver == null)
+            return null;
         try {
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             String timestamp = LocalDateTime.now()

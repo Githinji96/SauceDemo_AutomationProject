@@ -13,17 +13,18 @@ import utils.ExtentReportManager;
 public class BaseTest {
 
     protected WebDriver driver;
-    protected String username = LoadProperties.getUsername();
-    protected String password = LoadProperties.getPassword();
+/
+        /    protected String username = LoadProperties.getUsername();
+//    protected String password = LoadProperties.getPassword();
 
     @Parameters({"env", "browser"})
     @BeforeMethod
     public void setUp(@Optional("qa") String env,
-                      @Optional("chrome") String browser) {
+                      @Optional("firefox") String browser) {
         // Allow Maven command-line overrides: mvn test -Denv=staging -Dbrowser=firefox
         String resolvedEnv     = System.getProperty("env", env);
         String resolvedBrowser = System.getProperty("browser", browser);
-        String url             = LoadProperties.getUrlForEnv(resolvedEnv);
+        String url            = LoadProperties.getUrlForEnv(resolvedEnv);
 
         DriverFactory factory = new DriverFactory(resolvedBrowser);
         driver = factory.getDriver();
