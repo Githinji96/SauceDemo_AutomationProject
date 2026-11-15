@@ -13,8 +13,7 @@ import utils.ExtentReportManager;
 public class BaseTest {
 
     protected WebDriver driver;
-/
-        /    protected String username = LoadProperties.getUsername();
+ //  protected String username = LoadProperties.getUsername();
 //    protected String password = LoadProperties.getPassword();
 
     @Parameters({"env", "browser"})
